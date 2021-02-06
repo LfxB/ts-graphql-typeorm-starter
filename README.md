@@ -9,4 +9,4 @@
 ## Running
 
 Navigate to [http://localhost:3000](http://localhost:3000/) to view the client.
-Navigate to [http://localhost:5000/](http://localhost:5000/graphql) (change the port according to the env) to view the GraphQL interface for the server.
+Navigate to [http://localhost:5000/graphql](http://localhost:5000/graphql) (change the port according to the env) to view the GraphQL interface for the server.
