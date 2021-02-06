@@ -76,5 +76,5 @@
   max-width: 320px;
   position: absolute;
   padding: 10px;
-  word-break: break-all;
+  word-break: break-word;
 }
