@@ -9,5 +9,8 @@
     "start": "concurrently \"yarn workspace client start\" \"yarn workspace server clean && yarn workspace server start\"",
     "client": "yarn workspace client start",
     "server": "yarn workspace server clean && yarn workspace server start"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0"
   }
 }
