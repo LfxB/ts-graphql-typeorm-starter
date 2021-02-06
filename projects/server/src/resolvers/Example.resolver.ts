@@ -34,6 +34,7 @@ export class ExampleResolver {
     @Arg('roomId') roomId: number,
     @Ctx() ctx: MyContext
   ): Promise<number> {
+    console.log('Entered room', roomId);
     ctx.req.session.roomId = roomId;
     return roomId;
   }
