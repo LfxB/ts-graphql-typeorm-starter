@@ -36,3 +36,31 @@
     transform: rotate(360deg);
   }
 }
+
+.Messenger-header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.Messenger-header > div {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.Messenger-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.Messenger-input-container {
+  padding: 20px;
+}
+
+.Messenger-input {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
