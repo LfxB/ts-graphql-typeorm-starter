@@ -1,16 +1,25 @@
+import { useMutation } from '@apollo/client';
 import React, { useState } from 'react';
 import '../../App.css';
+import { SEND_MESSAGE } from '../../graphql/services/room.service';
 
 interface MessengerInputProps {}
 const MessengerInput: React.FC<MessengerInputProps> = (props) => {
   const [input, setInput] = useState('');
+  const [sendMessage, { data }] = useMutation(SEND_MESSAGE);
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInput(event.target.value);
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    try {
+      await sendMessage({ variables: { text: input } });
+      setInput('');
+    } catch (error) {
+      alert('Message did not send.');
+    }
   };
 
   return (
@@ -20,7 +29,7 @@ const MessengerInput: React.FC<MessengerInputProps> = (props) => {
           <p style={{ display: 'inline-block', padding: '0px 5px' }}>
             Message:
           </p>
-          <input type="text" name="name" value={input} onChange={onChange} />
+          <input type="text" value={input} onChange={onChange} />
         </label>
         <input type="submit" value="Send" disabled={!input} />
       </form>
