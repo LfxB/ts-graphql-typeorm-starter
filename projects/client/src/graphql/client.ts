@@ -3,13 +3,15 @@ import { getMainDefinition } from '@apollo/client/utilities';
 import { WebSocketLink } from '@apollo/client/link/ws';
 
 const httpLink = new HttpLink({
-  uri: process.env.REACT_APP_GRAPHQL_SERVER
+  uri: process.env.REACT_APP_GRAPHQL_SERVER,
+  credentials: 'include'
 });
 
 const wsLink = new WebSocketLink({
   uri: process.env.REACT_APP_GRAPHQL_SERVER_WS || '',
   options: {
-    reconnect: true
+    reconnect: true,
+    lazy: true
   }
 });
 
@@ -32,7 +34,8 @@ const splitLink = split(
 
 const graphqlClient = new ApolloClient({
   link: splitLink,
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
+  credentials: 'include'
 });
 
 export default graphqlClient;
