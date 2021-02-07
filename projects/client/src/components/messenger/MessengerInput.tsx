@@ -9,7 +9,7 @@ const MessengerInput: React.FC<MessengerInputProps> = (props) => {
   const [sendMessage, { data }] = useMutation(SEND_MESSAGE);
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInput(event.target.value);
+    setInput(event.target.value.substring(0, 140));
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -26,12 +26,23 @@ const MessengerInput: React.FC<MessengerInputProps> = (props) => {
     <div className="Messenger-input">
       <form onSubmit={handleSubmit}>
         <label style={{ fontSize: 18, padding: '0px 5px' }}>
-          <p style={{ display: 'inline-block', padding: '0px 5px' }}>
-            Message:
-          </p>
           <input type="text" value={input} onChange={onChange} />
+          <p
+            style={{
+              display: 'inline-block',
+              padding: '0px 5px',
+              fontSize: 12,
+              color: '#d6adad'
+            }}
+          >
+            {`${input.length}/140`}
+          </p>
         </label>
-        <input type="submit" value="Send" disabled={!input} />
+        <input
+          type="submit"
+          value="Send"
+          disabled={!input || input.length > 140}
+        />
       </form>
     </div>
   );

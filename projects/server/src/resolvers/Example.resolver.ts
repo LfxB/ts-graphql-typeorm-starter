@@ -48,7 +48,7 @@ export class ExampleResolver {
   ): Promise<boolean> {
     try {
       const message: Message = {
-        message: text,
+        message: text.substring(0, 140),
         username: 'me',
         sendTime: new Date().getTime()
       };
